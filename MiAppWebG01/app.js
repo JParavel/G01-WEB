@@ -1,5 +1,6 @@
 import express from "express";
 import UserRouter from "./routes/UserRouter.js";
+import homeRouter from "./routes/home.js"
 
 const app = express();
 const puerto = 3000;
@@ -41,20 +42,11 @@ app.get("/", (req, res) => {
     res.send("Hola, Mundo!")
 })
 
-app.get("/home", (req, res) => {
-    //Implementar el codigo
-    res.send("Estas en el apartado <b>HOME</b>")
-})
-
-app.get("/home/G01", (req, res) => {
-    //Implementar el codigo
-    res.send("Bienvenido a la clase G01")
-})
-
-app.get("/direccion", (req, res) => {
-    //Implementar el codigo
-    res.redirect("home/G01")
-})
+// app.get("/direccion", (req, res) => {
+//     //Implementar el codigo
+//     res.redirect("home/G01")
+// })
 
 app.use("/usuario", UserRouter)
+app.use("/home", homeRouter)
 
