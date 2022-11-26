@@ -40,7 +40,7 @@ router.get("/agrupar", (req, res) => {
 router.get("/agrupar/:args", (req, res) => {
     let nombres = req.params.args
     nombres = nombres.split(" ")
-    //  nombres = "Juan, Andrea, Daniel, Laura"
+    //  nombres = "Juan Andrea Daniel Laura"
     //  nombres = ["Juan", "Andrea", "Daniel", "Laura"]
     res.json(nombres)
 })

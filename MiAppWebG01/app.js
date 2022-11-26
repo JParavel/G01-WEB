@@ -47,6 +47,7 @@ app.get("/", (req, res) => {
 //     res.redirect("home/G01")
 // })
 
+app.use(express.json())
 app.use("/usuario", UserRouter)
 app.use("/home", homeRouter)
 
