@@ -1,4 +1,5 @@
 import express from "express"
+import {crearPublicacion, leerPublicacion, leerPublicaciones} from "../controllers/homeController.js"
 
 let router = express.Router()
 
@@ -14,27 +15,23 @@ router.get("/G01", (req, res) => {
     res.send("Bienvenido a la clase G01")
 })
 
-let publicaciones = []
+//CRUD
+
+//CREAR : create
+//LEER: read
+//ACTUALIZAR: update
+//ELIMINAR: delete
 
 router.post("/nuevo", function (req, res){
-
-    let id = Math.random().toString(36).slice(2)
-
-    let publicacion = {
-        "nuestra publicacion": req.body.publicacion,
-        "identificiador de la publicacion":id
-    }
-
-    res.json(publicacion)
-
-    publicaciones.push(publicacion)
+    crearPublicacion(req, res);
 })
 
 router.get("/lista", (req, res) => {
-    //Implementar el codigo
-    res.json(publicaciones)
+    leerPublicaciones(req, res)
 })
 
-
+router.get("/lista/:id", (req, res) => {
+    leerPublicacion(req, res)
+})
 
 export default router;
