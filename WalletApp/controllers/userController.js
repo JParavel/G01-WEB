@@ -1,7 +1,17 @@
+import userModel from "../models/userModel.js"
+
 //CRUD
-export function createUser(res){
+export async function createUser(req, res){
     //IMPLEMENTACION AQUI
-    res.sendStatus(200)
+    const {nombre, edad, ciudad} = req.body.usuario
+
+    const usuario = await userModel.create({
+        nombre,
+        edad,
+        ciudad
+    })
+
+    res.status(201).json(usuario)
 }
 
 export function readUser(res){
