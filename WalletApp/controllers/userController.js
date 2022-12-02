@@ -1,30 +1,83 @@
 import userModel from "../models/userModel.js"
 
 //CRUD
+//CREATE
 export async function createUser(req, res){
     //IMPLEMENTACION AQUI
-    const {nombre, edad, ciudad} = req.body.usuario
+    // const {nombre, edad, ciudad} = req.body.usuario
+    const usuario = req.body.usuario
 
-    const usuario = await userModel.create({
-        nombre,
-        edad,
-        ciudad
-    })
+    // if (usuario == null) {
+    //     res.status(400).json({
+    //         "error": "Falta el objeto usuario en el cuerpo de la petición."
+    //     })
+    //     return
+    // }
 
-    res.status(201).json(usuario)
+    let documento
+
+    try {
+        documento = await userModel.create(usuario)
+    } catch (error) {
+        res.status(400).json(error.message)
+        return;
+    }
+
+    res.status(201).json(documento)
 }
 
-export function readUser(res){
+//READ
+export async function readUser(req, res){
     //IMPLEMENTACION AQUI
-    res.sendStatus(200)
+    const id = req.params.id
+
+    let documento
+
+    try {
+        documento = await userModel.findOne({"_id":id})
+    } catch (error) {
+        res.status(400).json(error.message)
+        return;
+    }
+
+    res.status(200).json(documento)
 }
 
-export function updateUser(res){
+//UPDATE
+export async function updateUser(req, res){
+
     //IMPLEMENTACION AQUI
-    res.sendStatus(200)
+    //1) findOneAndUpdate
+    //2) findOne ... Update
+
+    const id = req.params.id
+    const updates = req.body.updates
+
+    let documento = null
+
+    try {
+        documento = await userModel.updateOne({"_id":id},updates)
+    } catch (error) {
+        res.status(400).json(error.message)
+        return;
+    }
+
+    res.status(200).json(documento)
 }
 
-export function deleteUser(res){
+//DELETE
+export async function deleteUser(req, res){
     //IMPLEMENTACION AQUI
-    res.sendStatus(200)
+    const id = req.body.id
+
+    let documento = null
+
+    try {
+        documento = await userModel.deleteOne({"_id":id})
+    } catch (error) {
+        res.status(400).json(error.message)
+        return;
+    }
+
+    res.status(200).json(documento)
 }

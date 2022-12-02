@@ -10,18 +10,18 @@ userRouter.post("/", (req, res) => {
 })
 
 //LEER: GET
-userRouter.get("/", (req, res) => {
-    readUser(res)
+userRouter.get("/:id", (req, res) => {
+    readUser(req, res)
 })
 
 //ACTUALIZAR: PUT / PATCH
-userRouter.patch("/", (req, res) => {
-    updateUser(res)
+userRouter.patch("/:id", (req, res) => {
+    updateUser(req, res)
 })
 
 //ELIMINAR: DELETE
 userRouter.delete("/", (req, res) => {
-    deleteUser(res)
+    deleteUser(req, res)
 })
 
 export default userRouter

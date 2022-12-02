@@ -1,5 +1,6 @@
 import express from "express"
 import mongoose from "mongoose";
+import testRouter from "./routes/testRouter.js";
 import userRouter from "./routes/userRouter.js";
 
 const app = express();
@@ -21,3 +22,4 @@ mongoose.connect("mongodb+srv://walletapp:walletapp@clusterwalletapp.ryjayfo.mon
 //Middleware
 app.use(express.json())
 app.use("/user", userRouter)
+app.use("/test", testRouter)
