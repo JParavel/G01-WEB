@@ -2,7 +2,7 @@ import userModel from "../models/userModel.js"
 
 //CRUD
 //CREATE
-export async function createUser(req, res){
+export async function createUser(req, res) {
     //IMPLEMENTACION AQUI
     // const {nombre, edad, ciudad} = req.body.usuario
     const usuario = req.body.usuario
@@ -27,14 +27,14 @@ export async function createUser(req, res){
 }
 
 //READ
-export async function readUser(req, res){
+export async function readUser(req, res) {
     //IMPLEMENTACION AQUI
     const id = req.params.id
 
     let documento
 
     try {
-        documento = await userModel.findOne({"_id":id})
+        documento = await userModel.findOne({ "_id": id })
     } catch (error) {
         res.status(400).json(error.message)
         return;
@@ -44,7 +44,7 @@ export async function readUser(req, res){
 }
 
 //UPDATE
-export async function updateUser(req, res){
+export async function updateUser(req, res) {
 
     //IMPLEMENTACION AQUI
     //1) findOneAndUpdate
@@ -56,7 +56,7 @@ export async function updateUser(req, res){
     let documento = null
 
     try {
-        documento = await userModel.updateOne({"_id":id},updates)
+        documento = await userModel.updateOne({ "_id": id }, updates, { runValidators: true })
     } catch (error) {
         res.status(400).json(error.message)
         return;
@@ -66,14 +66,14 @@ export async function updateUser(req, res){
 }
 
 //DELETE
-export async function deleteUser(req, res){
+export async function deleteUser(req, res) {
     //IMPLEMENTACION AQUI
     const id = req.body.id
 
     let documento = null
 
     try {
-        documento = await userModel.deleteOne({"_id":id})
+        documento = await userModel.deleteOne({ "_id": id })
     } catch (error) {
         res.status(400).json(error.message)
         return;
