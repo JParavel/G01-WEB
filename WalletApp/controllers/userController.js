@@ -1,4 +1,5 @@
 import userModel from "../models/userModel.js"
+import bcrypt from "bcrypt"
 
 //CRUD
 //CREATE
@@ -7,12 +8,10 @@ export async function createUser(req, res) {
     // const {nombre, edad, ciudad} = req.body.usuario
     const usuario = req.body.usuario
 
-    // if (usuario == null) {
-    //     res.status(400).json({
-    //         "error": "Falta el objeto usuario en el cuerpo de la petición."
-    //     })
-    //     return
-    // }
+    const { password } = usuario
+
+    const encriptedPassword = await bcrypt.hash(password, 10)
+    usuario.password = encriptedPassword
 
     let documento
 

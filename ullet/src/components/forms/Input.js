@@ -3,7 +3,7 @@ import "./forms.css"
 
 export default function Input(props) {
 
-    const { children, type } = props
+    const { children, type, value, onChange } = props
 
-    return (<input className='input' type={type} placeholder={children}></input>)
+    return (<input className='input' type={type} value={value} onChange={onChange} placeholder={children}></input>)
 }

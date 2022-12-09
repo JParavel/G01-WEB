@@ -7,7 +7,7 @@ function alerta(mensaje) {
 
 export default function Button(props) {
 
-    const { children } = props
+    const { children, onClick, type } = props
 
-    return (<button className='button' onClick={() => alerta("Implementacion")}>{children}</button>)
+    return (<button className='button' type={type} onClick={onClick}>{children}</button>)
 }

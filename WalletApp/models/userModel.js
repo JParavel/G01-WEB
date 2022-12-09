@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const perfil = mongoose.Schema({
+const perfil = new mongoose.Schema({
   mensaje: { type: String, required: true },
   estado: String,
 });
@@ -15,7 +15,7 @@ function validacionPar(numero) {
   }
 }
 
-const userModel = mongoose.Schema({
+const userModel = new mongoose.Schema({
   nombre: {
     type: String,
     required: true,
@@ -23,8 +23,10 @@ const userModel = mongoose.Schema({
     maxLength: 30,
     unique: true,
   },
-  edad: { type: Number, required: true, min: 14, max: 90, validate: { validator: validacionPar, message: "la edad debe ser un número par" } },
-  ciudad: { type: String, required: true, enum: ciudadesPosibles },
+  password: {
+    type: String,
+    required: true
+  }
 });
 
 export default mongoose.model("users", userModel);
