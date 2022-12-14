@@ -2,14 +2,13 @@
 
 * {
     font-family: 'Work Sans', sans-serif;
-    text-align: center;
+    font-size: 24px;
+    color: #1D3F6F;
     margin: 0;
     padding: 0;
     outline: none;
 }
 
-.flex {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.logo-title {
+    font-size: 64px;
 }

@@ -1,15 +1,25 @@
 import React from 'react';
-import Card from './utils/Card';
+import { Link, Navigate } from 'react-router-dom';
+import Logo from '../assets/Logo';
+import WireButton from './forms/WireButton';
+import Container from './utils/Container';
+import Flex from './utils/Flex';
 
-function Nav(props) {
+import "./components.css"
 
-    const { children } = props
+
+function Nav() {
 
     return (
-        <nav>
-            <Card>
-                {children}
-            </Card>
+        <nav className='nav'>
+            <Container>
+                <Flex className="nav">
+                    <Logo></Logo>
+                    <Link to="/"><b>Inicio</b></Link>
+                    <Link to="/"><b>Nosotros</b></Link>
+                    <WireButton>INGRESAR</WireButton>
+                </Flex>
+            </Container>
         </nav>
     );
 }

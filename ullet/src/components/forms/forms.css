@@ -1,16 +1,25 @@
-.button {
-    padding: 0.5rem;
+.button,
+.wire-button {
     border: none;
-    background-color: aqua;
-    color: black;
-    border-radius: 0.5rem;
+    background-color: #CA2728;
+    border-radius: 2rem;
+    padding: 0.5rem 2.5rem 0.5rem 2.5rem;
+}
+
+.button b {
+    color: white;
+}
+
+.wire-button {
+    background-color: transparent;
+    border: solid;
 }
 
 
-.button:hover {
+/* .button:hover {
     cursor: pointer;
     background-color: rgb(173, 17, 48);
-}
+} */
 
 .input {
     text-align: start;

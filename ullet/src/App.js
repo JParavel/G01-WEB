@@ -7,31 +7,14 @@ import Users from './views/Users';
 import { Link, Route, Routes } from "react-router-dom"
 import User from './views/User';
 import NewUser from './views/NewUser';
+import Nav from './components/Nav';
 
 
 export default function App() {
 
-    // const [view, setView] = useState(<User></User>);
-
-
     return (
         <div>
-            {/* <Nav>
-                <Button onClick={() => setView(<Home></Home>)}>Home</Button>
-                <Gap direction="horizontal">1rem</Gap>
-                <Button onClick={() => setView(<Login></Login>)}>Login</Button>
-                <Gap direction="horizontal">1rem</Gap>
-                <Button onClick={() => setView(<User></User>)}>User</Button>
-            </Nav>
-            <Gap direction="vertical">1rem</Gap>
-
-            {view} */}
-            <nav className='flex'>
-                <Link to="/">Home</Link>
-                <Link to="/login">Login</Link>
-                <Link to="/user">Users</Link>
-            </nav>
-
+            <Nav></Nav>
             <Routes>
                 <Route path='/' element={<Home></Home>}></Route>
                 <Route path='/login' element={<Login></Login>}></Route>

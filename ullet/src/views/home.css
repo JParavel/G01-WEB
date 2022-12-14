@@ -1,0 +1,17 @@
+.home {
+    text-align: left;
+}
+
+h4 {
+    font-size: 36px;
+}
+
+h1 {
+    font-size: 64px;
+    max-width: 672px;
+}
+
+p {
+    font-size: 32px;
+    max-width: 672px;
+}
