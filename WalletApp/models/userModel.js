@@ -16,17 +16,11 @@ function validacionPar(numero) {
 }
 
 const userModel = new mongoose.Schema({
-  nombre: {
-    type: String,
-    required: true,
-    minLength: 3,
-    maxLength: 30,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true
-  }
+  nombre: { type: String, required: true, minLength: 3, maxLength: 30, unique: true, },
+  password: { type: String, required: true },
+  ciudad: { type: String, required: true, enum: ciudadesPosibles }
+}, {
+  timestamps: true
 });
 
 export default mongoose.model("users", userModel);

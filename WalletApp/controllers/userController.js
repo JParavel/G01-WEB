@@ -6,23 +6,24 @@ import bcrypt from "bcrypt"
 export async function createUser(req, res) {
     //IMPLEMENTACION AQUI
     // const {nombre, edad, ciudad} = req.body.usuario
-    const usuario = req.body.usuario
-
-    const { password } = usuario
-
-    const encriptedPassword = await bcrypt.hash(password, 10)
-    usuario.password = encriptedPassword
-
-    let documento
-
     try {
-        documento = await userModel.create(usuario)
+        const usuario = req.body.usuario
+
+        const { password } = usuario
+
+        const encriptedPassword = await bcrypt.hash(password, 10)
+        usuario.password = encriptedPassword
+
+        const documento = await userModel.create(usuario)
+
+        res.status(201).json(documento)
+
     } catch (error) {
         res.status(400).json(error.message)
         return;
     }
 
-    res.status(201).json(documento)
+
 }
 
 //READ
@@ -34,6 +35,21 @@ export async function readUser(req, res) {
 
     try {
         documento = await userModel.findOne({ "_id": id })
+    } catch (error) {
+        res.status(400).json(error.message)
+        return;
+    }
+
+    res.status(200).json(documento)
+}
+
+export async function userList(req, res) {
+    //IMPLEMENTACION AQUI
+
+    let documento
+
+    try {
+        documento = await userModel.find({}, { _id: 0, password: 0, __v: 0 })
     } catch (error) {
         res.status(400).json(error.message)
         return;

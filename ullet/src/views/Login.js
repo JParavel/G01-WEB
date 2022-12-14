@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-import Card from './utils/Card';
-import Gap from './utils/Gap';
-import Input from './forms/Input';
-import Button from './forms/Button';
+import Card from '../components/utils/Card';
+import Gap from '../components/utils/Gap';
+import Input from '../components/forms/Input';
+import Button from '../components/forms/Button';
 
 export default function Login() {
 
