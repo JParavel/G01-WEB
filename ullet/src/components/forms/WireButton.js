@@ -7,9 +7,7 @@ export default function Button(props) {
 
     return (
         <button className='wire-button' type={type} onClick={onClick}>
-            <b>
-                {children}
-            </b>
+            {children}
         </button>
     )
 }

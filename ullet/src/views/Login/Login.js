@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 
-import Card from '../components/utils/Card';
-import Gap from '../components/utils/Gap';
-import Input from '../components/forms/Input';
-import Button from '../components/forms/Button';
+import Input from '../../components/forms/Input';
+import Button from '../../components/forms/Button';
+
+import "./Login.css"
+import Logo from '../../assets/Logo';
 
 export default function Login() {
 
@@ -33,16 +34,14 @@ export default function Login() {
     const [password, setPassword] = useState("");
 
     return (
-        <form onSubmit={onSubmit}>
-            <Card padding="2rem" flexDirection="column" borderRadius="0.5rem">
-                <h1>Login</h1>
-                <Gap>2rem</Gap>
-                <Input onChange={(v) => setUser(v.target.value)}>User Name</Input>
-                <Gap>0.5rem</Gap>
-                <Input type="password" onChange={(v) => setPassword(v.target.value)}>Contraseña</Input>
-                <Gap>2rem</Gap>
+        <section className='login'>
+            <Logo renderText={false} size="40px" />
+            <p className='title'>Iniciar Sesión En <b>Ullet</b></p>
+            <form onSubmit={onSubmit} className="flex card form">
+                <Input onChange={(v) => setUser(v.target.value)}><b>Nombre De Usuario</b></Input>
+                <Input type="password" onChange={(v) => setPassword(v.target.value)}><b>Contraseña</b></Input>
                 <Button type="submit"><b>INGRESAR</b></Button>
-            </Card>
-        </form>
+            </form>
+        </section>
     )
 }

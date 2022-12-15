@@ -1,14 +1,72 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;700&display=swap');
 
-* {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 24px;
-    color: #1D3F6F;
-    margin: 0;
-    padding: 0;
-    outline: none;
+:root {
+    --main-color: #1D3F6F;
+    --text-color: #404040;
+
+    --default-shadow: 0px 0px 5px rgb(0, 0, 0, 0.3);
+
+    --default-border-radius: 0.3rem
 }
 
-.logo-title {
-    font-size: 64px;
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body * {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 16px;
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+
+    text-decoration: none;
+
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 32px;
+    color: var(--main-color);
+}
+
+h2 {
+    font-size: 28px;
+    color: var(--main-color);
+}
+
+ul {
+    list-style: none;
+}
+
+b,
+a {
+    color: var(--main-color);
+    font-size: inherit;
+}
+
+
+
+.flex {
+    display: flex;
+}
+
+.inline-flex {
+    display: inline-flex;
+}
+
+.grid {
+    display: grid;
+}
+
+.container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.card {
+    box-shadow: var(--default-shadow);
+    padding: 1rem;
 }

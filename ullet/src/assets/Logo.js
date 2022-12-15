@@ -1,16 +1,25 @@
 import React from 'react';
-import Flex from '../components/utils/Flex';
+import { NavLink } from 'react-router-dom';
 
-import "./global.css"
+import "./Logo.css"
 // @ts-ignore
 import logo from "./logo.png"
 
-function Logo() {
+function Logo(props) {
+
+    const { size = "28px", renderText = true } = props
+
+    const style = {
+        width: size,
+        height: size
+    }
+
     return (
-        <Flex gap="0.5rem">
-            <img src={logo} style={{ width: "51px", height: "51px" }}></img>
-            <h1 className='logo-title'>Ullet</h1>
-        </Flex>
+        <NavLink to="/" className="logo inline-flex">
+            <img src={logo} style={style}></img>
+            {renderText ? <h1 className='title'>Ullet</h1> : null}
+        </NavLink>
+
     );
 }
 
