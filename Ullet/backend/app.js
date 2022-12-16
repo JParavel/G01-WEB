@@ -1,13 +1,13 @@
 //Importamos las dependencias
+import cors from 'cors';
 import dotenv from "dotenv"
 import express from "express"
-import mongoose, { mongo } from "mongoose"
+import mongoose from "mongoose"
 
 import apiRouter from "./routes/apiRouter.js"
 
 //Esta linea de código habilita el uso de variables de entorno en la aplicación
 dotenv.config()
-
 
 const app = express()
 const port = process.env.PORT || 8080
@@ -30,6 +30,9 @@ mongoose.connect(uri, (err) => {
 })
 
 //Middlewares
+app.use(cors({
+    origin: "http://localhost:3000"
+}))
 app.use(express.json()) //Este middleware ayuda a que express entienda JSON
 app.use("/api", apiRouter)
 app.use("/", (req, res) => res.json("Bienvenido a UlletAPI!"))

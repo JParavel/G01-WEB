@@ -12,9 +12,9 @@ function Navbar() {
         <>
             <nav className='navbar'>
                 <ul className='menu flex container'>
-                    <li><Link to="/"><Logo size="34px" showText={true} /></Link> </li>
-                    {/* <li><Link to="/">Inicio</Link></li> */}
-                    {/* <li><Link to="/about">Nosotros</Link></li> */}
+                    <li><Link to="/"><Logo size="34px" /></Link> </li>
+                    <li><Link to="/">Inicio</Link></li>
+                    <li><Link to="/about">Nosotros</Link></li>
                     <li><Link to="/login"><Button style="wire">Ingresar</Button></Link></li>
                 </ul>
             </nav >

@@ -1,0 +1,43 @@
+.panel .balance {
+    align-items: center;
+}
+
+.panel .balance .value {
+    font-size: 28px;
+    margin-left: auto;
+}
+
+.panel .movements {
+    margin-top: 2rem;
+}
+
+.transactions {
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.transaction {
+    background-color: rgb(222, 222, 222);
+    grid-template-columns: 1fr 1fr;
+    width: 70%;
+}
+
+.transaction .from {
+    font-size: 18px;
+    color: var(--main-color);
+    font-weight: 500;
+}
+
+.transaction .positive-value {
+    font-size: 18px;
+    color: var(--main-color);
+    font-weight: 700;
+    text-align: right;
+}
+
+.transaction .negative-value {
+    font-size: 18px;
+    color: var(--enf-color);
+    font-weight: 700;
+    text-align: right;
+}
