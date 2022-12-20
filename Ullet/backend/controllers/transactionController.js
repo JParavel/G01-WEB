@@ -11,7 +11,7 @@ export async function createTransaction(req, res) {
 }
 
 export async function readTransaction(req, res) {
-  const { name } = req.params;
+  const { name } = req;
 
   try {
     const documents = await transactionModel.find({

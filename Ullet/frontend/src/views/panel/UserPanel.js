@@ -1,19 +1,30 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
+import TokenContext from "../../contexts/TokenContext";
 import UserContext from "../../contexts/UserContext";
+import { getTransactions } from "../../services/transactionService";
 import Transaction from "./Transaction";
 
 import "./UserPanel.css";
 
 function UserPanel() {
   const { user } = useContext(UserContext);
+  const { token } = useContext(TokenContext);
+  const [cookies, setCookies] = useCookies(["token", "user"]);
+
+  const currentUser = user ? user : cookies.user;
+  const currentToken = token ? token : cookies.token;
 
   const navigate = useNavigate();
 
   const [documents, setDocuments] = useState([]);
 
   useEffect(() => {
-    if (!user) {
+    console.log(token);
+    console.log(cookies.token);
+
+    if (!currentUser) {
       return navigate("/login");
     }
 
@@ -21,8 +32,7 @@ function UserPanel() {
   }, []);
 
   async function fetchTransactions() {
-    const res = await fetch("http://localhost:8080/api/transaction/" + user);
-    const documents = await res.json();
+    const documents = await getTransactions(currentToken);
     setDocuments(documents);
   }
 
@@ -40,7 +50,7 @@ function UserPanel() {
             {documents.map((transaction) => (
               <Transaction
                 data={transaction}
-                user={user}
+                user={currentUser}
                 key={transaction._id}
               />
             ))}

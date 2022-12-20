@@ -4,7 +4,7 @@ import transactionRouter from "./transactionRouter.js";
 import userRouter from "./userRouter.js";
 
 const apiRouter = express.Router();
-
+//api
 apiRouter.use("/user", userRouter);
 apiRouter.use("/transaction", transactionRouter);
 apiRouter.get("/login", login);

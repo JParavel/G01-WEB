@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { useState } from "react";
+import { useCookies } from "react-cookie";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/Logo";
 import Button from "../../components/forms/Button";
 import Input from "../../components/forms/Input";
+import TokenContext from "../../contexts/TokenContext";
 import UserContext from "../../contexts/UserContext";
 import { login } from "../../services/authService";
 
@@ -11,8 +13,10 @@ import "./Login.css";
 
 function Login() {
   const { setUser } = useContext(UserContext);
+  const { setToken } = useContext(TokenContext);
   const [userInput, setUserInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
+  const [cookies, setCookies] = useCookies(["token", "user"]);
   const navigate = useNavigate();
 
   async function onButtonClick(event) {
@@ -21,7 +25,13 @@ function Login() {
     const token = await login(userInput, passwordInput);
 
     if (token) {
+      //Variables de contexto
       setUser(userInput);
+      setToken(token);
+      //Cookies
+      setCookies("token", token, { path: "/" });
+      setCookies("user", userInput, { path: "/" });
+
       navigate("/panel");
     }
   }

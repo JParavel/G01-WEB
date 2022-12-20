@@ -1,9 +1,13 @@
-import express from "express"
-import { createTransaction, readTransaction } from "../controllers/transactionController.js"
+import express from "express";
+import {
+  createTransaction,
+  readTransaction,
+} from "../controllers/transactionController.js";
+import { validateToken } from "../modules/authModule.js";
 
-const transactionRouter = express.Router()
+const transactionRouter = express.Router();
 
-transactionRouter.post("/", createTransaction)
-transactionRouter.get("/:name", readTransaction)
+transactionRouter.post("/", createTransaction);
+transactionRouter.get("/", validateToken, readTransaction);
 
-export default transactionRouter
+export default transactionRouter;
