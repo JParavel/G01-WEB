@@ -1,5 +1,7 @@
+import { API_URL } from "./api";
+
 export async function login(name, password) {
-  const res = await fetch("http://localhost:8080/api/login", {
+  const res = await fetch(API_URL + "/api/login", {
     method: "GET",
     headers: {
       name: name,

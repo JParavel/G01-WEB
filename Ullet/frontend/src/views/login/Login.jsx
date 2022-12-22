@@ -29,8 +29,8 @@ function Login() {
       setUser(userInput);
       setToken(token);
       //Cookies
-      setCookies("token", token, { path: "/" });
-      setCookies("user", userInput, { path: "/" });
+      setCookies("token", token, { path: "/", maxAge: 7 * 24 * 60 * 60 });
+      setCookies("user", userInput, { path: "/", maxAge: 7 * 24 * 60 * 60 });
 
       navigate("/panel");
     }

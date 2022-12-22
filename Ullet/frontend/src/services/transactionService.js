@@ -1,5 +1,7 @@
+import { API_URL } from "./api";
+
 export async function getTransactions(token) {
-  const res = await fetch("http://localhost:8080/api/transaction", {
+  const res = await fetch(API_URL + "/api/transaction", {
     headers: {
       token: token,
     },
