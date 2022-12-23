@@ -17,7 +17,15 @@ export async function createUser(req, res) {
   }
 }
 
-export function getUser(req, res) {}
+export async function getUser(req, res) {
+  try {
+    const { userID } = req;
+    const document = await userModel.findById(userID);
+    res.status(200).json(document);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+}
 
 export function updateUser(req, res) {}
 

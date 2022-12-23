@@ -1,4 +1,5 @@
 import transactionModel from "../models/transactionModel.js";
+import { getUser } from "../services/UserService.js";
 
 export async function createTransaction(req, res) {
   try {
@@ -11,11 +12,13 @@ export async function createTransaction(req, res) {
 }
 
 export async function readTransaction(req, res) {
-  const { name } = req;
-
   try {
+    const { token } = req.headers;
+
+    const user = await getUser(token);
+
     const documents = await transactionModel.find({
-      $or: [{ from: name }, { to: name }],
+      $or: [{ from: user.name }, { to: user.name }],
     });
     res.status(200).json(documents);
   } catch (error) {

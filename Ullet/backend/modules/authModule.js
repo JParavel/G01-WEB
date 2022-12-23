@@ -35,9 +35,8 @@ export async function login(req, res) {
 export async function validateToken(req, res, next) {
   try {
     const { token } = req.headers;
-    const _id = jwt.verify(token, privateKey)._id;
-    const document = await userModel.findById(_id);
-    req.name = document.name;
+    const userID = jwt.verify(token, privateKey)._id;
+    req.userID = userID;
     next();
   } catch (error) {
     res.status(401).json(error.message);

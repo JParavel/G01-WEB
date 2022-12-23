@@ -1,4 +1,5 @@
 import express from "express";
+import { validateToken } from "../modules/authModule.js";
 import {
   createUser,
   deleteUser,
@@ -10,7 +11,7 @@ import validatePassword from "../middlewares/validatePassword.js";
 const userRouter = express.Router();
 
 userRouter.post("/", validatePassword, createUser);
-userRouter.get("/", getUser);
+userRouter.get("/", validateToken, getUser);
 userRouter.patch("/", updateUser);
 userRouter.delete("/", deleteUser);
 
