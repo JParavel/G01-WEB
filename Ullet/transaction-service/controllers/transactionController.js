@@ -1,5 +1,5 @@
 import transactionModel from "../models/transactionModel.js";
-import { getUser } from "../services/UserService.js";
+import { getUser } from "../services/userService.js";
 
 export async function createTransaction(req, res) {
   try {
